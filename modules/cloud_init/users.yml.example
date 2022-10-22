@@ -1,0 +1,16 @@
+#cloud-config
+groups:
+  - admin
+
+users:
+  - name: user1
+    gecos: user1
+    primary_group: admin
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: admin, sudo
+    shell: /bin/bash
+    home: /home/user1
+    ssh_import_id:
+    lock_passwd: false
+    ssh_authorized_keys:
+      -  "ssh-rsa your-pub-key-here"

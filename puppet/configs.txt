@@ -1,0 +1,63 @@
+## Server
+### /etc/puppetlabs/code/environments/production/modules/accounts
+
+`cat examples/init.pp`
+```
+include accounts
+```
+
+`cat manifests/init.pp`
+```
+class accounts {
+
+  $rootgroup = 'sudo'
+
+  include accounts::broups
+
+  user { 'aska':
+    ensure      => present,
+    home        => '/home/aska',
+    shell       => '/bin/bash',
+    managehome  => true,
+    gid         => 'aska',
+    groups      => "$rootgroup",
+  }
+
+}
+```
+
+`cat manifests/broups.pp`
+class accounts::broups {
+
+  group { 'aska':
+    ensure  => present,
+  }
+
+}
+```
+
+### /etc/puppetlabs/code/environments/production/manifests/site.pp
+```
+node default {
+  include accounts
+
+}
+
+node 'puppet' {
+  include accounts
+
+}
+
+node 'ip-10-0-0-31.eu-west-2.compute.internal' {
+  include 'docker'
+  class {'docker::compose':
+  ensure  => present,
+  version => '1.9.0',
+}
+}
+```
+```
+/opt/puppetlabs/bin/puppet apply --noop site.pp
+/opt/puppetlabs/bin/puppet apply site.pp
+```
+

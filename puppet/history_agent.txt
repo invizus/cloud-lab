@@ -1,0 +1,25 @@
+  wget http://apt.puppet.com/puppet-release-bullseye.deb
+    2  dpkg -i puppet-release-bullseye.deb 
+    4  apt install puppet-agent
+    5  /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
+    9  ls /opt/puppetlabs/bin/
+   11  /opt/puppetlabs/bin/puppet config set server '10.0.0.99' --section main
+   12  /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
+   13  /opt/puppetlabs/bin/puppet agent -t
+   14  /opt/puppetlabs/bin/puppet config set server 'ip-10-0-0-99.eu-west-2.compute.internal' --section main
+   15  /opt/puppetlabs/bin/puppet agent -t
+   16  /opt/puppetlabs/bin/puppet agent -t
+   20  cd /etc/puppetlabs/
+   22  cd puppet/
+   24  vim puppet.conf 
+   25  /opt/puppetlabs/bin/puppet config set runinterval=1
+   26  /opt/puppetlabs/bin/puppet config set runinterval 5 --section main
+   27  vim puppet.conf 
+   28  /opt/puppetlabs/bin/puppet config set runinterval 1m --section main
+   29  vim puppet.conf 
+   32  ls | grep puppetlabs/
+   33  ls puppetlabs/
+   34  ls -alh puppetlabs/
+   35  ls puppetlabs/puppet/
+   36  ls puppetlabs/pxp-agent/
+   38  history | grep puppet

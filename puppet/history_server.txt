@@ -1,0 +1,40 @@
+    1  wget http://apt.puppet.com/puppet-release-bullseye.deb
+    2  dpkg -i puppet-release-bullseye.deb 
+    4  apt install puppetserver
+    5  cd /etc/puppetlabs/
+    8  cd puppet
+   10  vim puppet
+   12  vim puppetserver 
+   14  service puppetserver start
+   16  ls /opt/puppetlabs/
+   17  ls /opt/puppetlabs/bin
+   23  cd ../puppetlabs/puppet
+   25  cat puppet.conf 
+   26  /opt/puppetlabs/bin/puppet config set dns_alt_names 'puppet,10.0.0.99' --section main
+   27  cat puppet.conf 
+   30  systemctl enable puppetserver
+   34  /opt/puppetlabs/bin/puppet config set dns_alt_names 'puppet,10.0.0.99,ip-10-0-0-99.eu-west-2.compute.internal' --section main
+   35  /opt/puppetlabs/bin/puppetserver ca list
+   36  /opt/puppetlabs/bin/puppetserver ca sign --certname ip-10-0-0-31.eu-west-2.compute.internal
+   37  cd /etc/puppetlabs/code/environments/production/modules
+   51  /opt/puppetlabs/bin/puppet parser validate manifests/init.pp
+   54  puppet apply --noop init.pp
+   55  /opt/puppetlabs/bin/puppet apply --noop init.pp 
+   57  /opt/puppetlabs/bin/puppet apply --noop init.pp 
+   58  /opt/puppetlabs/bin/puppet apply init.pp 
+   62  /opt/puppetlabs/bin/puppet parser validate manifests/init.pp
+   64  /opt/puppetlabs/bin/puppet parser validate manifests/init.pp
+   66  /opt/puppetlabs/bin/puppet apply --noop init.pp 
+   68  /opt/puppetlabs/bin/puppet apply --noop init.pp 
+   70  /opt/puppetlabs/bin/puppet apply --noop init.pp 
+   71  /opt/puppetlabs/bin/puppet apply init.pp 
+   80  /opt/puppetlabs/bin/puppet parser validate site.pp
+   81  /opt/puppetlabs/bin/puppet apply --noop site.pp 
+   82  /opt/puppetlabs/bin/puppet apply site.pp 
+   86  /opt/puppetlabs/bin/puppet apply site.pp 
+   87  /opt/puppetlabs/bin/puppet module install puppetlabs-docker --version 6.0.2
+   92  /opt/puppetlabs/bin/puppet apply site.pp 
+  105  /opt/puppetlabs/bin/puppet apply --noop site.pp 
+  106  /opt/puppetlabs/bin/puppet apply site.pp 
+  133   history | grep puppet
+
